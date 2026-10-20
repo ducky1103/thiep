@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#4a0a14" />
+    <title>Thư mời tốt nghiệp 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Great+Vibes&family=Cinzel:wght@400;500;600&display=swap"
+    />
+    <script>
+      // Mặc định mở thiệp gatefold; chỉ giữ React cho ?tao-link
+      (function () {
+        var q = window.location.search || ''
+        if (q.indexOf('tao-link') === -1 && !/thiep-moi\.html$/i.test(location.pathname)) {
+          location.replace('/thiep-moi.html' + q + (location.hash || ''))
+        }
+      })()
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

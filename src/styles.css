@@ -1,0 +1,1062 @@
+/* ── Google Fonts ── */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=Dancing+Script:wght@700&family=Be+Vietnam+Pro:wght@400;500;600&display=swap');
+
+/* ── Tokens ── */
+:root {
+  --bg: #6b0f0f;
+  /* đỏ thẫm nền */
+  --paper: #f0ebe0;
+  /* màu giấy cũ */
+  --paper-dark: #e0d8c5;
+  --ink: #1a1209;
+  --red-ink: #8a1c1c;
+  --muted: #5a4a3a;
+  --accent: #8a1c1c;
+  --gold: #c8961e;
+
+  --font-serif: 'Playfair Display', 'Times New Roman', serif;
+  --font-script: 'Dancing Script', cursive;
+  --font-body: 'Be Vietnam Pro', system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg);
+  font-family: var(--font-body);
+  min-height: 100vh;
+  padding-block: 32px;
+  padding-inline: 16px;
+}
+
+.wrap {
+  width: min(100%, 420px);
+  margin-inline: auto;
+}
+
+/*image*/
+.entry-icon {
+  font-size: 5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.entry-icon img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  display: block;
+}
+
+/* ════════════════════════════════════════
+   ENVELOPE
+════════════════════════════════════════ */
+.env-wrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.envelope-back {
+  position: absolute;
+  bottom: -24px;
+  left: 0;
+  right: 0;
+  height: 260px;
+  background: #8a1818;
+  border-radius: 8px;
+  z-index: 0;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, .55);
+}
+
+.envelope-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: #a52020;
+  clip-path: polygon(0 0, 100% 0, 50% 70%);
+}
+
+/* ════════════════════════════════════════
+   INVITATION CARD
+════════════════════════════════════════ */
+.inv-card {
+  position: relative;
+  z-index: 1;
+  background: var(--paper);
+  width: 100%;
+  border-radius: 4px;
+  box-shadow:
+    0 2px 0 rgba(0, 0, 0, .12),
+    0 20px 60px rgba(0, 0, 0, .55),
+    inset 0 0 60px rgba(180, 160, 100, .08);
+  /* subtle paper texture via repeating gradient */
+  background-image:
+    radial-gradient(ellipse at 20% 10%, rgba(220, 200, 150, .25) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 90%, rgba(200, 180, 130, .2) 0%, transparent 55%);
+  margin-bottom: 16px;
+}
+
+/* Container bọc card + button */
+.invitation-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+/* Torn edge top */
+.torn-top {
+  height: 22px;
+  background: var(--paper);
+  position: relative;
+  border-radius: 4px 4px 0 0;
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='22'%3E%3Cpath d='M0 22 Q5 14 10 20 Q15 26 20 18 L20 0 L0 0Z' fill='white'/%3E%3C/svg%3E");
+  mask-size: 20px 22px;
+  mask-repeat: repeat-x;
+  background: var(--bg);
+  /* compensate: show paper behind */
+}
+
+.torn-top::after {
+  content: '';
+  position: absolute;
+  inset: 6px 0 0 0;
+  background: var(--paper);
+  border-radius: 4px 4px 0 0;
+}
+
+.torn-bottom {
+  height: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.torn-bottom::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 20px;
+  background: var(--bg);
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20'%3E%3Cpath d='M0 0 Q5 12 10 6 Q15 0 20 10 L20 20 L0 20Z' fill='white'/%3E%3C/svg%3E");
+  mask-size: 20px 20px;
+  mask-repeat: repeat-x;
+}
+
+/* ── Inner padding ── */
+.inv-inner {
+  padding: 20px 24px 32px;
+  position: relative;
+}
+
+/* ════════════════════════════════════════
+   HEADER TEXT
+════════════════════════════════════════ */
+.you-invited {
+  text-align: center;
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.title-block {
+  text-align: center;
+  position: relative;
+  margin-bottom: 4px;
+}
+
+.host-name-script {
+  font-family: var(--font-script);
+  font-size: clamp(1.6rem, 7vw, 2.1rem);
+  color: var(--red-ink);
+  line-height: 1.1;
+  margin-bottom: -4px;
+}
+
+.grad-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.2rem, 9.5vw, 3.2rem);
+  font-weight: 900;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.ceremony-script {
+  font-family: var(--font-script);
+  font-size: clamp(1.4rem, 6vw, 1.9rem);
+  color: var(--ink);
+  line-height: 1.1;
+  margin-top: -6px;
+}
+
+/* ── Decorative stars SVG ── */
+.stars-svg {
+  position: absolute;
+  top: 16px;
+  right: 0;
+  width: 100px;
+  height: 100px;
+  pointer-events: none;
+}
+
+/* ════════════════════════════════════════
+   CONTENT GRID
+════════════════════════════════════════ */
+.content-grid {
+  display: grid;
+  grid-template-columns: 42% 1fr;
+  gap: 12px;
+  margin-top: 12px;
+  align-items: start;
+}
+
+/* ── Photo column ── */
+.photo-col {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.vertical-text {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-size: 0.5rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--red-ink);
+  opacity: .65;
+  white-space: nowrap;
+  flex-shrink: 0;
+  align-self: center;
+  padding-block: 4px;
+}
+
+.photo-main {
+  flex: 1;
+  aspect-ratio: 3/4.2;
+  background: linear-gradient(145deg, #d4c9b0, #c8bda0);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: 2px dashed #a89878;
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color .2s;
+  /* Để gắn hình: thay background bằng url('your-image.jpg'); background-size: cover; */
+}
+
+.photo-main:hover {
+  border-color: var(--red-ink);
+}
+
+.photo-small {
+  width: 100%;
+  aspect-ratio: 1.1/1;
+  background: linear-gradient(145deg, #d4c9b0, #c8bda0);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: 2px dashed #a89878;
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color .2s;
+  margin-top: 8px;
+  /* Để gắn hình: thay background bằng url('your-image.jpg'); background-size: cover; */
+}
+
+.photo-small:hover {
+  border-color: var(--red-ink);
+}
+
+.photo-hint {
+  font-size: 0.72rem;
+  color: var(--muted);
+  line-height: 1.4;
+  padding: 8px;
+}
+
+.photo-hint.small {
+  font-size: 0.65rem;
+}
+
+.photo-hint small {
+  opacity: .75;
+  font-size: 0.6rem;
+}
+
+/* ── Info column ── */
+.info-col {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* DATE BADGE */
+.date-badge {
+  background: transparent;
+  text-align: center;
+  border: 1.5px solid var(--ink);
+  border-radius: 3px;
+  padding: 6px 8px 4px;
+}
+
+.date-month {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.date-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin: 2px 0;
+}
+
+.date-dow {
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--ink);
+}
+
+.date-num {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1;
+  color: var(--ink);
+}
+
+.date-time {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+}
+
+.date-year {
+  display: block;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
+
+/* VENUE */
+.venue-block {
+  display: flex;
+  gap: 4px;
+  align-items: flex-start;
+}
+
+.venue-pin {
+  font-size: 0.7rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.venue-name {
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--ink);
+  line-height: 1.3;
+}
+
+.venue-addr {
+  font-size: 0.52rem;
+  color: var(--muted);
+  line-height: 1.4;
+  margin-top: 2px;
+}
+
+.venue-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.venue-link:hover {
+  text-decoration: underline;
+  color: #a67c52;
+}
+
+/* Stars bottom */
+.stars-svg-bot {
+  width: 100%;
+  height: 60px;
+  margin-top: 4px;
+}
+
+/* ════════════════════════════════════════
+   GUEST NAME
+════════════════════════════════════════ */
+.guest-name-block {
+  text-align: center;
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px dashed #c0b090;
+}
+
+.for-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 2px;
+}
+
+.guest-name-script {
+  font-family: var(--font-script);
+  font-size: clamp(1.5rem, 6vw, 2rem);
+  color: var(--red-ink);
+  line-height: 1.2;
+  animation: nameRise .6s ease-out both;
+}
+
+/* ════════════════════════════════════════
+   QUOTE
+════════════════════════════════════════ */
+.inv-quote {
+  text-align: center;
+  font-family: var(--font-script);
+  font-size: clamp(1rem, 3.5vw, 1.25rem);
+  color: var(--ink);
+  line-height: 1.5;
+  margin-top: 16px;
+}
+
+.heart-row {
+  text-align: center;
+  color: var(--red-ink);
+  font-size: 1rem;
+  margin-top: 6px;
+}
+
+/* ════════════════════════════════════════
+   WAX SEAL
+════════════════════════════════════════ */
+.seal-wrap {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+  margin-top: -44px;
+  margin-bottom: -44px;
+}
+
+.wax-seal {
+  width: 80px;
+  height: 80px;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, .45));
+}
+
+/* ════════════════════════════════════════
+   NAME ENTRY SCREEN
+════════════════════════════════════════ */
+.entry-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+}
+
+.entry-card {
+  background: var(--paper);
+  border-radius: 10px;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, .15), 0 24px 48px rgba(0, 0, 0, .5);
+  padding: 44px 36px 40px;
+  width: 100%;
+  text-align: center;
+  animation: fadeIn .55s ease-out both;
+  background-image:
+    radial-gradient(ellipse at 20% 10%, rgba(220, 200, 150, .25) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 90%, rgba(200, 180, 130, .2) 0%, transparent 55%);
+}
+
+
+
+.entry-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.5rem, 6vw, 2rem);
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 10px;
+}
+
+.entry-sub {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-bottom: 28px;
+  line-height: 1.5;
+}
+
+.entry-field {
+  text-align: left;
+  margin-bottom: 16px;
+}
+
+.entry-field.shake {
+  animation: shake .45s ease-out;
+}
+
+.entry-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.entry-input {
+  font: inherit;
+  font-size: 1rem;
+  width: 100%;
+  color: var(--ink);
+  background: rgba(255, 255, 255, .6);
+  border: 1.5px solid #c0b090;
+  border-radius: 5px;
+  padding: 11px 14px;
+  transition: border-color .2s, box-shadow .2s;
+}
+
+.entry-input:focus {
+  outline: none;
+  border-color: var(--red-ink);
+  box-shadow: 0 0 0 3px rgba(138, 28, 28, .18);
+}
+
+.entry-input::placeholder {
+  color: #a0907a;
+}
+
+.entry-btn {
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  background: var(--red-ink);
+  color: #f8f2e6;
+  border: 0;
+  border-radius: 5px;
+  padding: 13px 20px;
+  letter-spacing: 0.03em;
+  transition: filter .2s, transform .1s;
+}
+
+.entry-btn:hover {
+  filter: brightness(1.15);
+}
+
+.entry-btn:active {
+  transform: scale(.98);
+}
+
+/* Link tool (keep working) */
+.tool {
+  margin-top: 0;
+  padding: 28px;
+  display: grid;
+  gap: 16px;
+  background: var(--paper);
+  border-radius: 8px;
+}
+
+.tool h2 {
+  font-family: var(--font-serif);
+  font-size: 1.75rem;
+  line-height: 1.15;
+  margin: 0;
+  color: var(--ink);
+}
+
+.tool p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.tool label {
+  display: grid;
+  gap: 6px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+}
+
+.tool textarea,
+.tool input {
+  font: inherit;
+  font-size: 0.9375rem;
+  width: 100%;
+  color: var(--ink);
+  background: rgba(255, 255, 255, .5);
+  border: 1.5px solid #c0b090;
+  border-radius: 4px;
+  padding: 10px 12px;
+}
+
+.tool textarea {
+  min-height: 8.5rem;
+  resize: vertical;
+}
+
+.links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.links li {
+  display: grid;
+  gap: 6px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #c0b090;
+  min-width: 0;
+}
+
+.links .who {
+  font-weight: 600;
+  overflow-wrap: anywhere;
+  color: var(--ink);
+}
+
+.links .line {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.links .line input {
+  flex: 1 1 14rem;
+  min-width: 0;
+  font-size: 0.8rem;
+}
+
+.hint {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+
+/* Button chung */
+button,
+.btn {
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  background: var(--ink);
+  color: var(--paper);
+  border: 0;
+  border-radius: 4px;
+  padding: 8px 16px;
+  margin-top: 30px;
+  /* margin-left: 30px; */
+}
+
+/* Button ghost chung */
+button.ghost {
+  background: transparent;
+  color: var(--ink);
+  border: 1.5px solid #c0b090;
+}
+
+/* Button đổi tên khách mời */
+button.ghost.back-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  margin: 16px auto 32px;
+  padding: 11px 24px;
+
+  background: transparent;
+  color: var(--ink);
+  border: 1.5px solid #8a1c1c;
+  border-radius: 30px;
+
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+/* Hover riêng cho nút đổi tên */
+button.ghost.back-btn:hover {
+  background: #8a1c1c;
+  color: var(--paper);
+  border-color: #8a1c1c;
+  box-shadow: 0 4px 12px rgba(80, 60, 35, 0.12);
+  transform: translateY(-2px);
+  filter: none;
+}
+
+/* Hiệu ứng khi nhấn */
+button.ghost.back-btn:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* Hover cho các button còn lại */
+button:hover {
+  filter: brightness(1.15);
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  button.ghost.back-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+  }
+}
+
+/* ════════════════════════════════════════
+   ANIMATIONS
+════════════════════════════════════════ */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes nameRise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes shake {
+
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  20% {
+    transform: translateX(-7px);
+  }
+
+  40% {
+    transform: translateX(7px);
+  }
+
+  60% {
+    transform: translateX(-5px);
+  }
+
+  80% {
+    transform: translateX(5px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .guest-name-script,
+  .entry-card {
+    animation: none;
+  }
+}
+
+/* ── Responsive ── */
+@media (max-width: 400px) {
+  .inv-inner {
+    padding-inline: 16px;
+  }
+
+  .content-grid {
+    grid-template-columns: 40% 1fr;
+    gap: 8px;
+  }
+
+  .entry-card {
+    padding: 32px 20px 28px;
+  }
+}
+
+
+/* =========================================
+   RESPONSIVE FIT - GRADUATION INVITATION
+   Desktop + Mobile | Viewport height 768px
+========================================= */
+
+/* 1. Reset khung hiển thị */
+html {
+  min-height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: 10px 16px;
+}
+
+/* 2. Khung trang */
+.wrap {
+  width: min(100%, 420px);
+  margin-inline: auto;
+}
+
+/* 3. Căn thiệp và nút theo chiều dọc */
+.invitation-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-height: calc(100svh - 20px);
+}
+
+/* 4. Bỏ khoảng trắng thừa dưới thiệp */
+.inv-card {
+  margin-bottom: 0;
+  width: 100%;
+}
+
+/* 5. Thu gọn nội dung bên trong */
+.inv-inner {
+  padding: 12px 20px 16px;
+}
+
+.you-invited {
+  margin-bottom: 4px;
+}
+
+.title-block {
+  margin-bottom: 2px;
+}
+
+.content-grid {
+  margin-top: 8px;
+  gap: 8px;
+}
+
+.guest-name-block {
+  margin-top: 10px;
+  padding-top: 8px;
+}
+
+.inv-quote {
+  margin-top: 8px;
+  line-height: 1.3;
+}
+
+.heart-row {
+  margin-top: 4px;
+}
+
+.stars-svg-bot {
+  height: 28px;
+  margin-top: 2px;
+}
+
+/* 6. Thu gọn trang trí */
+.envelope-back {
+  bottom: -12px;
+  height: 180px;
+}
+
+.envelope-flap {
+  height: 90px;
+}
+
+.wax-seal {
+  width: 64px;
+  height: 64px;
+}
+
+.seal-wrap {
+  margin-top: -34px;
+  margin-bottom: -34px;
+}
+
+/* 7. Nút đổi tên */
+button.ghost.back-btn {
+  flex-shrink: 0;
+  margin: 12px auto 0;
+  padding: 9px 20px;
+}
+
+/* 8. Màn hình thấp: laptop 768px */
+@media (max-height: 800px) {
+  body {
+    padding-block: 8px;
+  }
+
+  .invitation-container {
+    min-height: calc(100svh - 16px);
+  }
+
+  .inv-inner {
+    padding: 10px 18px 12px;
+  }
+
+  .host-name-script {
+    font-size: clamp(1.4rem, 5vw, 1.7rem);
+  }
+
+  .grad-title {
+    font-size: clamp(2rem, 7vw, 2.5rem);
+  }
+
+  .ceremony-script {
+    font-size: clamp(1.25rem, 5vw, 1.5rem);
+  }
+
+  .content-grid {
+    margin-top: 6px;
+    gap: 7px;
+  }
+
+  .date-num {
+    font-size: 1.7rem;
+  }
+
+  .guest-name-block {
+    margin-top: 8px;
+    padding-top: 6px;
+  }
+
+  .guest-name-script {
+    font-size: clamp(1.4rem, 5vw, 1.7rem);
+  }
+
+  .inv-quote {
+    margin-top: 5px;
+    font-size: clamp(0.9rem, 3vw, 1.1rem);
+  }
+
+  .stars-svg-bot {
+    height: 22px;
+  }
+
+  button.ghost.back-btn {
+    margin-top: 8px;
+    padding: 8px 18px;
+  }
+}
+
+/* 9. Điện thoại */
+@media (max-width: 480px) {
+  body {
+    padding-inline: 12px;
+  }
+
+  .wrap {
+    width: 100%;
+  }
+
+  .inv-inner {
+    padding-inline: 16px;
+  }
+
+  .content-grid {
+    grid-template-columns: 40% minmax(0, 1fr);
+    gap: 8px;
+  }
+
+  .info-col {
+    min-width: 0;
+  }
+
+  .venue-name,
+  .venue-addr {
+    overflow-wrap: anywhere;
+  }
+}
+
+/* 10. Điện thoại thấp hoặc màn hình ngang */
+@media (max-height: 650px) {
+  body {
+    padding-block: 6px;
+  }
+
+  .inv-inner {
+    padding-block: 8px 10px;
+  }
+
+  .host-name-script {
+    font-size: 1.3rem;
+  }
+
+  .grad-title {
+    font-size: 1.8rem;
+  }
+
+  .ceremony-script {
+    font-size: 1.15rem;
+  }
+
+  .photo-main {
+    aspect-ratio: 3 / 3.5;
+  }
+
+  .guest-name-script {
+    font-size: 1.35rem;
+  }
+
+  .stars-svg-bot {
+    height: 16px;
+  }
+
+  button.ghost.back-btn {
+    margin-top: 6px;
+    padding: 7px 16px;
+  }
+}
+
+/* 11. Giảm animation gây xê dịch bố cục */
+@media (prefers-reduced-motion: reduce) {
+  .guest-name-script {
+    animation: none;
+  }
+}
